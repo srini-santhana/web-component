@@ -1,4 +1,5 @@
 MicroApps using Angular Elements
+--------------------------------
  
 
 Step-1:
@@ -17,11 +18,14 @@ Step-2:
 
 Add Angular Elements - which supports CustomElements
 
- 
-
 ng add @angular/elements
+npm i @webcomponents/custom-elements --save
 
- 
+Import those packages into polyfills.ts file:
+import "@webcomponents/custom-elements/src/native-shim";
+import "@webcomponents/custom-elements/custom-elements.min";
+
+
 
 Step-3
  
@@ -101,16 +105,17 @@ Use the component within Angular App
  
 
 Index.html
-
+<body>
+  <app-root></app-root>
+  <my-heroes></my-heroes>
+</body>
  
 
 Step-7
+------
  
-
 Using the component outside Angular App Build & deploy
-
  
-
 const fs = require('fs-extra');
 
 const concat = require('concat');
@@ -137,3 +142,8 @@ await fs.copyFile('./dist/heroes/styles.css', 'heroes/styles.css')
 
 
 ng build heroes --prod --output-hashing none && node build-elements.js
+
+Step-8
+------
+
+
