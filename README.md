@@ -19,10 +19,13 @@ Step-2:
 Add Angular Elements - which supports CustomElements
 
 ng add @angular/elements
+
 npm i @webcomponents/custom-elements --save
 
 Import those packages into polyfills.ts file:
+
 import "@webcomponents/custom-elements/src/native-shim";
+
 import "@webcomponents/custom-elements/custom-elements.min";
 
 
