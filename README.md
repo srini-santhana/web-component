@@ -116,6 +116,9 @@ Index.html
 
 Step-7
 ------
+
+npm install --save-dev concat fs-extra
+
  
 Using the component outside Angular App Build & deploy
  
