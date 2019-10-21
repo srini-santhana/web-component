@@ -1,155 +1,27 @@
-MicroApps using Angular Elements
---------------------------------
- 
+# Heroes
 
-Step-1:
- 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
 
-Creates new Angular application
+## Development server
 
- 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-ng new heroes
+## Code scaffolding
 
- 
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-Step-2:
- 
+## Build
 
-Add Angular Elements - which supports CustomElements
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-ng add @angular/elements
+## Running unit tests
 
-npm i @webcomponents/custom-elements --save
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-Import those packages into polyfills.ts file:
+## Running end-to-end tests
 
-import "@webcomponents/custom-elements/src/native-shim";
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-import "@webcomponents/custom-elements/custom-elements.min";
+## Further help
 
-
-
-Step-3
- 
-
-Create a component 'heroes'
-
- 
-
-ng generate component heroes
-
- 
-
-Step-4
- 
-
-Build component
-
- 
-
-Display heroes
-
- 
-
-Step-5
-
- 
-
-Convert to Angular Component to Web Component
-
- 
-
-import { BrowserModule } from '@angular/platform-browser';
-
-import { NgModule , Injector } from '@angular/core';
-
-import { createCustomElement } from '@angular/elements';
-
-import { AppComponent } from './app.component';
-
-import { HeroesComponent } from './heroes/heroes.component';
-
-
-@NgModule({
-
-    declarations: [ AppComponent, HeroesComponent ],
-
-    imports: [ BrowserModule ],
-
-    providers: [], bootstrap: [HeroesComponent]
-
-})
-
-
-export class AppModule {
-
-    constructor(private injector: Injector) {
-
-      this.ngDoBootstrap();
-
-    }
-
-    ngDoBootstrap() {
-
-        const el = createCustomElement(HeroesComponent, { injector: this.injector });         
-
-    customElements.define('my-heroes', el);
-
-}
-
- 
-
-Step-6
- 
-
-Use the component within Angular App
-
- 
-
-Index.html
-<body>
-  <app-root></app-root>
-  <my-heroes></my-heroes>
-</body>
- 
-
-Step-7
-------
-
-npm install --save-dev concat fs-extra
-
- 
-Using the component outside Angular App Build & deploy
- 
-const fs = require('fs-extra');
-
-const concat = require('concat');
-
-(async function build() {
-
-   const files =
-
-       [ './dist/heroes/runtime.js',
-
-         './dist/heroes/polyfills.js',
-
-         './dist/heroes/scripts.js',
-
-         './dist/heroes/main.js', ]
-
-await fs.ensureDir('heroes')
-
-await concat(files, 'heroes/heroes.js');
-
-await fs.copyFile('./dist/heroes/styles.css', 'heroes/styles.css')
-
-})()
-
-
-ng build heroes --prod --output-hashing none && node build-elements.js
-
-Step-8
-------
-
-
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
